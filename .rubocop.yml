@@ -1,0 +1,15 @@
+AllCops:
+  TargetRubyVersion: "2.5.7"
+  Exclude:
+      - 'db/**/*'
+      - 'config/**/*'
+      - 'bin/**/*'
+      - 'tmp/**/*'
+      - 'lib/tasks/**/*'
+      - 'node_modules/**/*'
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
