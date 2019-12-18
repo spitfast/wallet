@@ -15,4 +15,11 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+import React from 'react';
+import { render } from 'react-dom';
+import '../stylesheets/application'
+import App from '../components/App';
+
+document.addEventListener('DOMContentLoaded', () => {
+  render(<App />, document.querySelector('#root'));
+});
