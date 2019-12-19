@@ -19,6 +19,7 @@ end
 ## Install
 ````
 bundle install
+yarn install
 rails db:setup
  ````
 ## Development
