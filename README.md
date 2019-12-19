@@ -1,8 +1,6 @@
 # Internal wallet transactional system
 
-This project is implementation of simple wallet.
-The main idea is to have polymorphic Wallet model + Walletable concern.
-With this you can easily transform any model to be walletable. You just need to include Walletable to your model like this:
+This project is the implementation of a simple wallet. The main idea is to have a polymorphic Wallet model + Walletable concern. With this, you can easily transform any model to be walletable. You just need to include Walletable to your model like this:
 ```ruby
 class SomeModel < ApplicationRecord
   include Walletable
