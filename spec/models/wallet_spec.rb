@@ -34,8 +34,8 @@ describe Wallet do
   describe 'deposit/withdraw locks' do
     fixtures :wallets, :users
 
-    let(:deposit_wallet) { wallets(:wallet)}
-    let(:withdraw_wallet) { wallets(:wallet)}
+    let(:deposit_wallet) { wallets(:wallet) }
+    let(:withdraw_wallet) { wallets(:wallet) }
 
     it 'properly deposit balance' do
       make_concurrent_calls(deposit_wallet, :deposit, 100)

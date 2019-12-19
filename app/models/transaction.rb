@@ -27,6 +27,7 @@ class Transaction < ApplicationRecord
 
   def available_balance
     return unless withdraw_wallet.present? && amount.present?
+
     errors.add(:withdraw_wallet_id, 'not enough balance') if withdraw_wallet.balance < amount
   end
 end

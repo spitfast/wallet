@@ -1,3 +1,7 @@
 with_positive_balance:
   id: 1
   name: 'john'
+
+rich_wallet:
+  id: 2
+  name: 'Ri¢hie Ri¢h'

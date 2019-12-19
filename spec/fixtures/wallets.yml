@@ -3,3 +3,9 @@ wallet:
   balance: 50
   walletable_id: 1
   walletable_type: 'User'
+
+rich_wallet:
+  id: 2
+  balance: 500
+  walletable_id: 2
+  walletable_type: 'User'

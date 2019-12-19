@@ -2,4 +2,6 @@
 
 Rails.application.routes.draw do
   root 'site#index'
+
+  mount API::Base, at: '/'
 end

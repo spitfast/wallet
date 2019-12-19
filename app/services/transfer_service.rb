@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-class TransferValidationError < StandardError; end
 class TransferGeneralError < StandardError; end
 
 class TransferService
@@ -14,8 +13,8 @@ class TransferService
         Transaction.create_with_transfer!(@args)
       end
     end
-  rescue ActiveRecord::RecordInvalid => e
-    raise TransferValidationError, e.message
+  rescue ActiveRecord::RecordInvalid => _e
+    raise
   rescue StandardError => e
     raise TransferGeneralError, e.message
   end

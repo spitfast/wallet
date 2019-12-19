@@ -1,20 +1,30 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 describe TransferService do
   describe '#perfrom' do
-    let(:withdraw_wallet) { create(:wallet, balance: 100) }
-    let(:deposit_wallet) { create(:wallet) }
-
     it 'make transfer' do
-      transfer = TransferService.new(withdraw_wallet: withdraw_wallet, deposit_wallet: deposit_wallet, amount: 100)
-
-      expect { transfer.perform }.not_to raise_error
+      expect { create_transfer(amount: 100).perform }.not_to raise_error
     end
 
     it 'raise validation error' do
-      transfer = TransferService.new(withdraw_wallet: withdraw_wallet, deposit_wallet: deposit_wallet, amount: 150)
+      expect { create_transfer(amount: 150).perform }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+  end
 
-      expect { transfer.perform }.to raise_error(TransferValidationError)
+  describe '#concurrency' do
+    fixtures :wallets, :users
+    let(:deposit_wallet) { wallets(:wallet) }
+    let(:withdraw_wallet) { wallets(:rich_wallet) }
+
+    it 'properly work with transfers' do
+      transfer = create_transfer(amount: 10, deposit_wallet: deposit_wallet, withdraw_wallet: withdraw_wallet)
+
+      make_concurrent_calls(transfer, :perform)
+
+      expect(withdraw_wallet.reload.balance).to eq(BigDecimal(480))
+      expect(deposit_wallet.reload.balance).to eq(BigDecimal(70))
     end
   end
 end
