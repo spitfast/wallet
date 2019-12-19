@@ -8,7 +8,7 @@ class SomeModel < ApplicationRecord
   include Walletable
 end
 ```
-##Technologies stack
+## Technologies stack
 * ruby 2.5.7.
 * rails 5.2.4
 * Postgres 9.6.2
