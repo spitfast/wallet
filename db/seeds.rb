@@ -6,3 +6,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user = User.create(name: 'John')
+user.wallet.update(balance: 100)
+
+team = Team.create(name: 'Doe team')
+team.wallet.update(balance: 100)
